@@ -9,7 +9,6 @@ export const Popup = ({ text, closePopup }) => {
       <div>
         <h2>LogIn</h2>
         <div className="center">
-      <GoogleButton onClick={() => { console.log('Google button clicked') }}/>
       </div>
       </div>
       {/* {text}  */}

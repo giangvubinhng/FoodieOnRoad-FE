@@ -2,12 +2,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import React, { useState } from "react";
-import { Popup } from "../Popup/Popup.jsx";
-import {InputForm} from "../InputForm/InputForm.jsx"
+import React from "react";
+import { useUserStore } from '../app/store'
 
 function NavigationBar() {
-  const [open, setOpen] = useState(false);
+  const currentUser = useUserStore((state) => state.user)
   return (
     <>
       <Navbar bg="light" variant="light">
@@ -16,7 +15,7 @@ function NavigationBar() {
           <Nav className="nav navbar-right">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/search">Search</Nav.Link>
-            <Nav.Link as={Link} to="/FoodtruckInput">Input</Nav.Link>
+            {currentUser?.isLoggedIn ? <Nav.Link as={Link} to="/create-event">Add Event</Nav.Link> : null}
           </Nav>
         </Container>
       </Navbar>

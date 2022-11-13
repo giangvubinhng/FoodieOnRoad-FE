@@ -1,18 +1,29 @@
+import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import DetailsModal from './DetailsModal'
 
-function ResultCard({ title, description, getDetails }) {
+function ResultCard({ event}) {
+  const [modalShow, setModalShow] = useState(false)
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="https://media.istockphoto.com/id/847893726/vector/food-truck.jpg?s=612x612&w=0&k=20&c=fK9JGZe0LWPN9ShlPWE2LLzdsTIlsN2LJSJW6J6KT9k=" />
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>
-          {description}
-        </Card.Text>
-        <Button variant="primary" onClick={() => getDetails(true)}>Details</Button>
-      </Card.Body>
-    </Card>
+    <>
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src="https://media.istockphoto.com/id/847893726/vector/food-truck.jpg?s=612x612&w=0&k=20&c=fK9JGZe0LWPN9ShlPWE2LLzdsTIlsN2LJSJW6J6KT9k=" />
+        <Card.Body>
+          <Card.Title>{event.name}</Card.Title>
+          <Card.Text>
+            {event.description}
+          </Card.Text>
+          <Button variant="primary" onClick={() => setModalShow(true)}>Details</Button>
+        </Card.Body>
+      </Card>
+
+      <DetailsModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        event={event}
+      />
+    </>
   );
 }
 

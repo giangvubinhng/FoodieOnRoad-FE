@@ -9,7 +9,6 @@ import Col from 'react-bootstrap/Col';
 import eventService from '../services/event.service'
 import Card from '../components/ResultCard'
 import SearchForm from '../components/SearchForm'
-import DetailsModal from '../components/DetailsModal'
 import '../style/SearchPage.css'
 
 function SearchPage() {
@@ -18,7 +17,7 @@ function SearchPage() {
   const loc = searchParams.get("loc") || ''
   const city = searchParams.get("city") || ''
   const state = searchParams.get("state") || ''
-  const rad = searchParams.get("rad") || ''
+  const rad = searchParams.get("radius") || ''
   const hasParam = !!(Array.from(searchParams.keys()).length > 0)
 
   const result = useQuery(
@@ -35,7 +34,6 @@ function SearchPage() {
 
   const navigate = useNavigate();
 
-  const [modalShow, setModalShow] = useState(false)
   const [input, setInput] = useState({ location: '', radius: '' })
 
   const handleChange = (e) => {
@@ -56,7 +54,7 @@ function SearchPage() {
       navigator.geolocation.getCurrentPosition(function(position) {
         const lat = position.coords.latitude
         const long = position.coords.longitude;
-        const coord = `/search?loc=${long}+${lat}&city=&state=&rad=${input.radius}`
+        const coord = `/search?loc=${long}+${lat}&city=&state=&radius=${input.radius}`
         navigate(coord)
       });
     }
@@ -65,7 +63,7 @@ function SearchPage() {
       if (locationString.length >= 2) {
         const city = locationString[0]
         const state = locationString[1]
-        const coord = `/search?loc=&city=${city}&state=${state}&rad=${input.radius}`
+        const coord = `/search?loc=&city=${city}&state=${state}&radius=${input.radius}`
         navigate(coord)
       }
 
@@ -82,9 +80,9 @@ function SearchPage() {
         {result.error ? 'error' : null}
         {result.data ? <Container>
           <Row sm={4}>
-            {result.data.map((elem, ind) => {
+            {result?.data?.map((elem, ind) => {
               return (<Col className="col" key={ind} >
-                <Card title={elem.name} key={elem.id} description={elem.description} getDetails={(e) => setModalShow(e)} />
+                <Card event={elem} key={elem.id}  />
               </Col>)
             })}
           </Row>
@@ -99,10 +97,6 @@ function SearchPage() {
           </Row>
         </Container>*/}
       </div>
-      <DetailsModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
     </>
   )
 }
