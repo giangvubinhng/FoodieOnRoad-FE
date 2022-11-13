@@ -1,11 +1,12 @@
 import styledhomepage from "../style/styledhomepage.css"
 import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
 import React, { useState } from "react";
-import { Popup } from "../Popup/Popup.jsx";
 
 function Home() {
-  const [open, setOpen] = useState(false);
+  const login = async () => {
+    const newWindow = window.open(
+			'http://localhost:3030/auth/google', "_self");
+  }
   return (
     <div className="Home">
       
@@ -16,12 +17,11 @@ function Home() {
             </header>
 
             <div className="desciption">  
-              <h5>Look For a Foodtruck</h5>
+              <h5>Find exquisite food everywhere you go</h5>
             </div>
 
             <div className="login">
-              <h6>Are you a foodtruck owner? <button onClick={() => setOpen(true)}>Login</button></h6>    
-              {open ? <Popup closePopup={() => setOpen(false)} /> : null}
+              <h6>Foodtruck Owner? <button onClick={login}>Login With Google</button></h6>    
             </div>
         </div>
         <div className="child c1">

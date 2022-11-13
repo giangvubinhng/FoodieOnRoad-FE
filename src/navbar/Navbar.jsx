@@ -14,8 +14,6 @@ function NavigationBar() {
           <Navbar.Brand as={Link} to="/">FoodieOnRoad</Navbar.Brand>
           <Nav className="nav navbar-right">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} onClick={() => setOpen(true)}>Login</Nav.Link>
-            {open ? <Popup closePopup={() => setOpen(false)} /> : null}
             <Nav.Link as={Link} to="/search">Search</Nav.Link>
           </Nav>
         </Container>
