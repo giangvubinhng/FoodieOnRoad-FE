@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import { Popup } from "../Popup/Popup.jsx";
+import {InputForm} from "../InputForm/InputForm.jsx"
 
 function NavigationBar() {
   const [open, setOpen] = useState(false);
@@ -17,6 +18,7 @@ function NavigationBar() {
             <Nav.Link as={Link} onClick={() => setOpen(true)}>Login</Nav.Link>
             {open ? <Popup closePopup={() => setOpen(false)} /> : null}
             <Nav.Link as={Link} to="/search">Search</Nav.Link>
+            <Nav.Link as={Link} to="/FoodtruckInput">Input</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
