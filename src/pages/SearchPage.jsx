@@ -25,7 +25,9 @@ function SearchPage() {
     ["events"],
     () => eventService.fetchEvents(loc, city, state, rad),
     {
-      enabled: hasParam
+      enabled: hasParam,
+      cacheTime: 0,
+      refetchOnMount: true
     }
   );
 
@@ -54,7 +56,7 @@ function SearchPage() {
       navigator.geolocation.getCurrentPosition(function(position) {
         const lat = position.coords.latitude
         const long = position.coords.longitude;
-        const coord = `/search?loc=${lat}%20${long}&city=&state=&rad=${input.radius}`
+        const coord = `/search?loc=${long}+${lat}&city=&state=&rad=${input.radius}`
         navigate(coord)
       });
     }
@@ -80,13 +82,22 @@ function SearchPage() {
         {result.error ? 'error' : null}
         {result.data ? <Container>
           <Row sm={4}>
+            {result.data.map((elem, ind) => {
+              return (<Col className="col" key={ind} >
+                <Card title={elem.name} key={elem.id} description={elem.description} getDetails={(e) => setModalShow(e)} />
+              </Col>)
+            })}
+          </Row>
+        </Container> : null}
+        {/*<Container>
+          <Row sm={4}>
             {Array.from({ length: 10 }).map((_, ind) => {
               return (<Col className="col" key={ind} >
                 <Card title={"Long gay"} description={"Long bede"} getDetails={(e) => setModalShow(e)} />
               </Col>)
             })}
           </Row>
-        </Container> : null}
+        </Container>*/}
       </div>
       <DetailsModal
         show={modalShow}

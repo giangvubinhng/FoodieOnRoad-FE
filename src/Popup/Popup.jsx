@@ -8,7 +8,7 @@ export const Popup = ({ text, closePopup }) => {
      <div className="popup-body">
       <div>
         <h2>LogIn</h2>
-        <div class="center">
+        <div className="center">
       <GoogleButton onClick={() => { console.log('Google button clicked') }}/>
       </div>
       </div>
