@@ -75,7 +75,7 @@ function SearchPage() {
         <SearchForm handleChange={() => handleChange} handleSubmit={() => handleSubmit} />
       </div>
 
-      <div className="container">
+      <div className="result-container">
         {result.fetchStatus !== "idle" && result.isLoading ? 'Loading...' : null}
         {result.error ? 'error' : null}
         {result.data ? <Container>
