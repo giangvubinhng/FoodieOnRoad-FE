@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import '../style/styledhomepage.css'
 
 function Home() {
   const login = async () => {
@@ -8,7 +9,6 @@ function Home() {
   return (
     <div className="Home">
       <div className="parent">
-    <button onClick={fetch}>test</button>
         <div className="child">
             <header>
               <h1>Foodie On Road</h1>
