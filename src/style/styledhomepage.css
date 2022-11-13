@@ -1,0 +1,47 @@
+.Home {
+    min-width: 100vw;
+    /* 100vw; */
+    min-height: 100vh;
+    /* 100vh; */
+    background-color: #FFC300;
+    padding-bottom: 5em;
+}
+
+header {
+    font-size: 4em;
+    margin-left: 1em;
+    padding-top: 4em;
+    color: rgb(38, 32, 24);
+}
+
+.desciption {
+    margin-left: 4em;
+}
+
+.login {
+    margin-left: 4.5em;
+    color: rgb(162, 146, 125);
+}
+
+.parent {
+    /* border: 1px solid black; */
+    /* margin: 1rem; */
+    padding: 2rem 2rem;
+    text-align: center;
+  }
+
+.child {
+    display: inline-block;
+    /* border: 1px solid red; */
+    padding: 1rem 4rem;
+    vertical-align: middle;
+  
+}
+
+.c1 {
+    padding-top: 10em;
+}
+
+.about {
+    margin-left: 8em;
+}
