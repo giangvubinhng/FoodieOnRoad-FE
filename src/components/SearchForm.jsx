@@ -1,5 +1,4 @@
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
 
 function SearchForm(props) {
 
@@ -16,7 +15,7 @@ function SearchForm(props) {
           name="radius"
           onChange={props.handleChange()}
         />
-        <Button variant="outline-success" type="submit" >Search</Button>
+        <button type="submit" >Search</button>
       </Form>
     </>
   )

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import DetailsModal from './DetailsModal'
 
@@ -14,7 +13,7 @@ function ResultCard({ event}) {
           <Card.Text>
             {event.description}
           </Card.Text>
-          <Button variant="primary" onClick={() => setModalShow(true)}>Details</Button>
+          <button onClick={() => setModalShow(true)}>Details</button>
         </Card.Body>
       </Card>
 
