@@ -1,16 +1,14 @@
-import styledhomepage from "../style/styledhomepage.css"
-import Badge from 'react-bootstrap/Badge';
 import React, { useState } from "react";
 
 function Home() {
   const login = async () => {
-    const newWindow = window.open(
+    window.open(
 			'http://localhost:3030/auth/google', "_self");
   }
   return (
     <div className="Home">
-      
       <div className="parent">
+    <button onClick={fetch}>test</button>
         <div className="child">
             <header>
               <h1>Foodie On Road</h1>
